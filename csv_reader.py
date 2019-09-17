@@ -25,3 +25,15 @@ class CSVReader:
 
     def add_item(self, item):
         raise NotImplementedError('This method needs be overwritten.')
+
+
+class BasicsCSVReader(CSVReader):
+    TITLE_TYPE = 'movie'
+
+    def add_item(self, item):
+        if item[1] == self.TITLE_TYPE:
+            self.data.append({
+                'tconst': item[0],
+                'primaryTitle': item[2],
+                'originalTitle': item[3],
+            })
