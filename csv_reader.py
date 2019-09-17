@@ -37,3 +37,12 @@ class BasicsCSVReader(CSVReader):
                 'primaryTitle': item[2],
                 'originalTitle': item[3],
             })
+
+
+class RatingsCSVReader(CSVReader):
+    def add_item(self, item):
+        self.data.append({
+            'tconst': item[0],
+            'averageRating': item[1],
+            'numVotes': item[2],
+        })
