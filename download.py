@@ -5,10 +5,11 @@ import shutil
 
 
 class DownloadIMDBDatabase:
-    BASE_URL = os.getenv('IMDB_BASE_URL', 'https://datasets.imdbws.com')
+    def __init__(self, base_url):
+        self.base_url = base_url
 
     def download(self, file_name):
-        file_url = f'{self.BASE_URL}/{file_name}'
+        file_url = f'{self.base_url}/{file_name}'
         file_path = file_name
 
         with requests.get(file_url, stream=True) as req:
