@@ -10,7 +10,7 @@ class CSVReader:
         current_dir = os.getcwd()
 
         self.file_path = os.path.join(current_dir, file_path)
-        self.data = []
+        self.data = {}
         self.read_data()
 
     def read_data(self):
@@ -31,18 +31,20 @@ class BasicsCSVReader(CSVReader):
     TITLE_TYPE = 'movie'
 
     def add_item(self, item):
+        tconst = item[0]
         if item[1] == self.TITLE_TYPE:
-            self.data.append({
-                'tconst': item[0],
+            self.data[tconst] = {
+                'tconst': tconst,
                 'primaryTitle': item[2],
                 'originalTitle': item[3],
-            })
+            }
 
 
 class RatingsCSVReader(CSVReader):
     def add_item(self, item):
-        self.data.append({
+        tconst = item[0]
+        self.data[tconst] = {
             'tconst': item[0],
             'averageRating': item[1],
             'numVotes': item[2],
-        })
+        }
