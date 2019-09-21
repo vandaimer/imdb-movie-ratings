@@ -16,7 +16,7 @@ class DownloadIMDBDatabase:
             with open(file_path, 'wb') as file:
                 shutil.copyfileobj(req.raw, file)
 
-        return self._extract(file_path)
+        self._extract(file_path)
 
     def _extract(self, file_path):
         new_file_path = file_path.replace('.gz', '')
