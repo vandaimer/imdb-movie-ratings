@@ -16,7 +16,7 @@ class CSVReader:
     def read_data(self):
         try:
             with open(self.file_path, 'r') as file:
-                reader = csv.reader(file)
+                reader = csv.reader(file, delimiter='\t')
                 next(reader, None)
                 for row in reader:
                     self.add_item(row)
