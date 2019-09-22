@@ -1,3 +1,4 @@
+from tabulate import tabulate
 import os
 import click
 import logging
@@ -41,6 +42,11 @@ def main(load_data, search_word):
     imdb = IMBDMovieRatings(basics.data, ratings.data)
 
     logger.info(f'Searching for {search_word} ...')
+    movies = imdb.search(search_word)
+
+    logger.info('Is going to show you the first 100 first result...')
+    headers = ('Title', 'Rating')
+    print(tabulate(list(map(lambda x: [x[1]['primaryTitle'], x[1]['rating']], movies[:100])), headers=headers))
 
 
 if __name__ == '__main__':
