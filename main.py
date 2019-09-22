@@ -17,8 +17,8 @@ logging.basicConfig(
 logger = logging.getLogger()
 
 @click.command()
-@click.option("--load-data", default=False, help="Load data from internet")
-@click.option("--search-word", default='', help="Word to search")
+@click.option('-l', '--load-data', required=True, default=False, help='Load data from internet')
+@click.option('-w', '--search-word', required=True, type=str, help='Word to search')
 def main(load_data, search_word):
     TITLE_BASIC_FILE = os.getenv('TITLE_BASIC_FILE', 'title.basics.tsv')
     TITLE_RATINGS_FILE = os.getenv('TITLE_BASIC_FILE', 'title.ratings.tsv')
