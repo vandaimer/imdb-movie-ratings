@@ -8,7 +8,7 @@ class IMBDMovieRatings:
 
     def process(self):
         self._match_with_ratings()
-        self._sort_by_avarante_rating()
+        self._sort_by_average_rating()
 
     def _match_with_ratings(self):
         for tconst, basic in self.basics.items():
@@ -18,7 +18,7 @@ class IMBDMovieRatings:
             else:
                 basic['rating'] = 0.0
 
-    def _sort_by_avarante_rating(self):
+    def _sort_by_average_rating(self):
         self.sorted_data = sorted(self.basics.items(), key=lambda x: x[1]['rating'], reverse=True)
 
     def search(self, word):
