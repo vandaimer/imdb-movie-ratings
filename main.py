@@ -47,10 +47,13 @@ def main(load_data, search_word, number_results):
 
     logger.info(f'Is going to show you the first {number_results} first result...')
     headers = ('Title', 'Rating')
-    print(
-        tabulate(list(map(lambda x: [x[1]['primaryTitle'], x[1]['rating']],
-                          movies[:number_results])), headers=headers)
-    )
+
+    def parse_movie(movie):
+        return [
+            movie[1]['primaryTitle'],
+            movie[1]['rating'],
+        ]
+    print(tabulate(list(map(parse_movie, movies[:number_results])), headers=headers))
 
 
 if __name__ == '__main__':
