@@ -41,6 +41,7 @@ def main(load_data, search_word, number_results):
 
     logger.info('Initializing IMBDMovieRatings...')
     imdb = IMBDMovieRatings(basics.data, ratings.data)
+    imdb.process()
 
     logger.info(f'Searching for {search_word} ...')
     movies = imdb.search(search_word)

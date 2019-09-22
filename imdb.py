@@ -5,9 +5,8 @@ class IMBDMovieRatings:
         self.basics = basics
         self.ratings = ratings
         self.sorted_data = []
-        self._process()
 
-    def _process(self):
+    def process(self):
         self._match_with_ratings()
         self._sort_by_avarante_rating()
 
